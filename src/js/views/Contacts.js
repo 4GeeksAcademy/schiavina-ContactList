@@ -9,7 +9,8 @@ export const Contacts = () => {
 	const { store } = useContext(Context);
 	console.log(store.listaContactos);
 	const [state, setState] = useState({
-		showModal: false
+		showModal: false,
+		fullName: ""
 	});
 
 	return (
@@ -29,13 +30,13 @@ export const Contacts = () => {
 								email={item.email}
 								phone={item.phone}
 								address={item.address}
-								onDelete={() => setState({ showModal: true })}
+								onDelete={() => setState({ showModal: true, fullName: item.fullName })}
 							/>
 						))}
 					</ul>
 				</div>
 			</div>
-			<Modal show={state.showModal} onClose={() => setState({ showModal: false })} />
+			<Modal show={state.showModal} fullName={state.fullName} onClose={() => setState({ showModal: false })} />
 		</div>
 	);
 };

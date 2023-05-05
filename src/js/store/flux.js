@@ -12,10 +12,14 @@ const getState = ({ getStore, setStore }) => {
 		},
 		actions: {
 			agregarContacto: (fullName, email, phone, address) => {
-				// getStore().listaContactos.concat({fullName, email, phone, address})
 				setStore({ listaContactos: getStore().listaContactos.concat({ fullName, email, phone, address }) });
-				// console.log("funciona");
 				console.log(getStore());
+			},
+
+			borrarContacto: nombre => {
+				const store = getStore();
+				const nuevaLista = store.listaContactos.filter(item => item.fullName !== nombre);
+				setStore({ listaContactos: nuevaLista });
 			}
 			//(Arrow) Functions that update the Store
 			// Remember to use the scope: scope.state.store & scope.setState()
