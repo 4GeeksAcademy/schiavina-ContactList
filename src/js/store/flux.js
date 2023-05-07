@@ -1,14 +1,7 @@
 const getState = ({ getStore, setStore }) => {
 	return {
 		store: {
-			listaContactos: [
-				{
-					fullName: "Maximiliano Schiavina",
-					email: "maxisch@hotmail.com",
-					phone: "123141241",
-					address: "Acebuche 1 , Mijas"
-				}
-			]
+			listaContactos: []
 		},
 		actions: {
 			agregarContacto: (fullName, email, phone, address) => {
@@ -20,6 +13,13 @@ const getState = ({ getStore, setStore }) => {
 				const store = getStore();
 				const nuevaLista = store.listaContactos.filter(item => item.fullName !== nombre);
 				setStore({ listaContactos: nuevaLista });
+			},
+
+			obtenerContactos: () => {
+				fetch("https://assets.breatheco.de/apis/fake/contact/agenda/schiavinaAgenda")
+					.then(response => response.json())
+					.then(data => setStore({ listaContactos: data }))
+					.catch(err => console.log(err));
 			}
 			//(Arrow) Functions that update the Store
 			// Remember to use the scope: scope.state.store & scope.setState()

@@ -6,12 +6,14 @@ import { ContactCard } from "../component/ContactCard.js";
 import { Modal } from "../component/Modal";
 
 export const Contacts = () => {
-	const { store } = useContext(Context);
-	console.log(store.listaContactos);
+	const { store, actions } = useContext(Context);
 	const [state, setState] = useState({
 		showModal: false,
 		fullName: ""
 	});
+	useEffect(() => {
+		actions.obtenerContactos();
+	}, []);
 
 	return (
 		<div className="container">
@@ -26,7 +28,7 @@ export const Contacts = () => {
 						{store.listaContactos.map((item, index) => (
 							<ContactCard
 								key={index}
-								fullName={item.fullName}
+								fullName={item.full_name}
 								email={item.email}
 								phone={item.phone}
 								address={item.address}
