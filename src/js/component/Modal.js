@@ -8,12 +8,6 @@ export const Modal = props => {
 		//initialize state here
 	});
 	const { actions } = useContext(Context);
-	// function borrarContacto(nombre) {
-	// 	const nuevaLista = .filter(item => item !== nombre);
-	// 	// setListaDatos(nuevaLista);
-	// 	console.log("funciona");
-	// 	console.log(nombre);
-	// }
 
 	return (
 		<div className="modal" tabIndex="-1" role="dialog" style={{ display: props.show ? "inline-block" : "none" }}>
