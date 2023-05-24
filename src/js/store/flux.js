@@ -26,7 +26,7 @@ const getState = ({ getStore, setStore }) => {
 
 			borrarContacto: nombre => {
 				const store = getStore();
-				const nuevaLista = store.listaContactos.filter(item => item.fullName !== nombre);
+				const nuevaLista = store.listaContactos.filter(item => item.full_name !== nombre);
 				setStore({ listaContactos: nuevaLista });
 			},
 

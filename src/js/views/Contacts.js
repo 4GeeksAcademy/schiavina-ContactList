@@ -32,7 +32,7 @@ export const Contacts = () => {
 								email={item.email}
 								phone={item.phone}
 								address={item.address}
-								onDelete={() => setState({ showModal: true, fullName: item.fullName })}
+								onDelete={() => setState({ showModal: true, fullName: item.full_name })}
 							/>
 						))}
 					</ul>
