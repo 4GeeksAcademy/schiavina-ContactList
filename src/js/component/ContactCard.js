@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import { Link } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import MikePhoto from "../../img/m101.jpg";
@@ -19,7 +19,9 @@ export const ContactCard = props => {
 				<div className="col-12 col-sm-6 col-md-9 text-center text-sm-left">
 					<div className=" float-right">
 						<button className="btn">
-							<i className="fas fa-pencil-alt mr-3" />
+							<Link className="mt-3 w-100 text-center" to="/edit">
+								<i className="fas fa-pencil-alt mr-3" />
+							</Link>
 						</button>
 						<button className="btn" onClick={() => props.onDelete()}>
 							<i className="fas fa-trash-alt" />

@@ -28,6 +28,10 @@ const getState = ({ getStore, setStore }) => {
 				const store = getStore();
 				const nuevaLista = store.listaContactos.filter(item => item.full_name !== nombre);
 				setStore({ listaContactos: nuevaLista });
+				fetch("https://assets.breatheco.de/apis/fake/contact/agenda/schiavinaAgenda", { method: "DELETE" })
+					.then(response => response.json())
+					.then(data => setStore({ listaContactos: data }))
+					.catch(err => console.log(err));
 			},
 
 			obtenerContactos: () => {
