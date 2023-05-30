@@ -9,7 +9,7 @@ export const Contacts = () => {
 	const { store, actions } = useContext(Context);
 	const [state, setState] = useState({
 		showModal: false,
-		fullName: ""
+		id: ""
 	});
 	useEffect(() => {
 		actions.obtenerContactos();
@@ -32,13 +32,13 @@ export const Contacts = () => {
 								email={item.email}
 								phone={item.phone}
 								address={item.address}
-								onDelete={() => setState({ showModal: true, fullName: item.full_name })}
+								onDelete={() => setState({ showModal: true, id: item.id })}
 							/>
 						))}
 					</ul>
 				</div>
 			</div>
-			<Modal show={state.showModal} fullName={state.fullName} onClose={() => setState({ showModal: false })} />
+			<Modal show={state.showModal} id={state.id} onClose={() => setState({ showModal: false })} />
 		</div>
 	);
 };

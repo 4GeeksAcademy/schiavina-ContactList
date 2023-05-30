@@ -1,4 +1,4 @@
-const getState = ({ getStore, setStore }) => {
+const getState = ({ getStore, setStore, getActions }) => {
 	return {
 		store: {
 			listaContactos: []
@@ -24,13 +24,14 @@ const getState = ({ getStore, setStore }) => {
 					.catch(err => console.log(err));
 			},
 
-			borrarContacto: nombre => {
-				const store = getStore();
-				const nuevaLista = store.listaContactos.filter(item => item.full_name !== nombre);
-				setStore({ listaContactos: nuevaLista });
-				fetch("https://assets.breatheco.de/apis/fake/contact/agenda/schiavinaAgenda", { method: "DELETE" })
+			borrarContacto: id => {
+				fetch("https://assets.breatheco.de/apis/fake/contact/" + id, { method: "DELETE" })
 					.then(response => response.json())
-					.then(data => setStore({ listaContactos: data }))
+					.then(data => {
+						if (data.msg == "ok") {
+							getActions().obtenerContactos();
+						}
+					})
 					.catch(err => console.log(err));
 			},
 

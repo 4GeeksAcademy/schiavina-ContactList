@@ -41,7 +41,7 @@ export const Modal = props => {
 							type="button"
 							className="btn btn-secondary"
 							data-dismiss="modal"
-							onClick={() => actions.borrarContacto(props.fullName)}>
+							onClick={() => actions.borrarContacto(props.id)}>
 							Do it!
 						</button>
 					</div>
@@ -58,7 +58,7 @@ Modal.propTypes = {
 	history: PropTypes.object,
 	onClose: PropTypes.func,
 	show: PropTypes.bool,
-	fullName: PropTypes.string
+	id: PropTypes.string
 };
 
 /**
