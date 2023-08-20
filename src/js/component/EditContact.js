@@ -4,24 +4,25 @@ import { Link } from "react-router-dom";
 
 export const EditContact = () => {
 	const { store, actions } = useContext(Context);
-	console.log(actions);
-	const [fullName, setFullName] = useState("");
-	const [email, setEmail] = useState("");
-	const [phone, setPhone] = useState("");
-	const [address, setAddress] = useState("");
+	const [fullName, setFullName] = useState(store.usuario.fullName);
+	const [email, setEmail] = useState(store.usuario.email);
+	const [phone, setPhone] = useState(store.usuario.phone);
+	const [address, setAddress] = useState(store.usuario.address);
+	const [numeroid, setNumeroId] = useState(store.usuario.numeroid)
 
 	function handleSubmit(e) {
 		e.preventDefault();
-		actions.agregarContacto(fullName, email, phone, address);
+		actions.actualizarContacto(fullName, email, phone, address, numeroid);
 		setFullName("");
 		setEmail("");
 		setPhone("");
 		setAddress("");
+		// actions.borrarContacto(store.usuario.numeroid);
 	}
 	return (
 		<div className="container">
 			<div>
-				<h1 className="text-center mt-5">Add a new contact</h1>
+				<h1 className="text-center mt-5">Edit Contact</h1>
 				<form onSubmit={handleSubmit}>
 					<div className="form-group">
 						<label>Full Name</label>

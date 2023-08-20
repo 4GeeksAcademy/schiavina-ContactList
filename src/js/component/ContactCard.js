@@ -1,14 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext, useEffect, useNavigate, useSyncExternalStore } from "react";
+import { Context } from "../store/appContext.js";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import MikePhoto from "../../img/m101.jpg";
 
 export const ContactCard = props => {
-	// console.log(props.fullName);
-	// const [state, setState] = useState({
-	// 	//initialize state here
-	// });
+	const { store, actions } = useContext(Context);
+	// const navigate = useNavigate();
+	function editar() {
+		console.log(props);
+		// actions.borrarContacto(props.numeroid);
+		actions.editarperfil(props);
+		// navigate("/edit");
+	}
 
 	return (
 		<li className="list-group-item">
@@ -18,11 +23,11 @@ export const ContactCard = props => {
 				</div>
 				<div className="col-12 col-sm-6 col-md-9 text-center text-sm-left">
 					<div className=" float-right">
-						<button className="btn">
-							<Link className="mt-3 w-100 text-center" to="/edit">
+						<Link to="/edit">
+							<button className="btn" onClick={() => editar(props)}>
 								<i className="fas fa-pencil-alt mr-3" />
-							</Link>
-						</button>
+							</button>
+						</Link>
 						<button className="btn" onClick={() => props.onDelete()}>
 							<i className="fas fa-trash-alt" />
 						</button>
@@ -63,7 +68,8 @@ ContactCard.propTypes = {
 	fullName: PropTypes.string,
 	email: PropTypes.string,
 	phone: PropTypes.string,
-	address: PropTypes.string
+	address: PropTypes.string,
+	numeroid: PropTypes.number
 };
 
 /**

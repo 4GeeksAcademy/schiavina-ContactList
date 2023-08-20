@@ -9,6 +9,10 @@ export const Modal = props => {
 	});
 	const { actions } = useContext(Context);
 
+	function borrar(id) {
+		console.log(props);
+	}
+
 	return (
 		<div className="modal" tabIndex="-1" role="dialog" style={{ display: props.show ? "inline-block" : "none" }}>
 			<div className="modal-dialog" role="document">
@@ -41,7 +45,7 @@ export const Modal = props => {
 							type="button"
 							className="btn btn-secondary"
 							data-dismiss="modal"
-							onClick={() => actions.borrarContacto(props.id)}>
+							onClick={() => borrar(props.numeroid)}>
 							Do it!
 						</button>
 					</div>
@@ -58,7 +62,7 @@ Modal.propTypes = {
 	history: PropTypes.object,
 	onClose: PropTypes.func,
 	show: PropTypes.bool,
-	id: PropTypes.string
+	numeroid: PropTypes.number
 };
 
 /**

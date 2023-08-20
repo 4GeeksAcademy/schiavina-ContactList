@@ -1,20 +1,18 @@
 const getState = ({ getStore, setStore, getActions }) => {
 	return {
 		store: {
-			listaContactos: []
+			listaContactos: [],
+			usuario: {}
 		},
 		actions: {
 			agregarContacto: (fullName, email, phone, address) => {
-				// setStore({ listaContactos: getStore().listaContactos.concat({ fullName, email, phone, address }) });
-				// console.log(getStore());
-
-				fetch("https://assets.breatheco.de/apis/fake/contact/", {
+				fetch("https://playground.4geeks.com/apis/fake/contact/", {
 					method: "POST",
 					body: JSON.stringify({
-						full_name: fullName,
-						email: email,
-						agenda_slug: "schiavinaAgenda",
 						address: address,
+						agenda_slug: "maxischiavina",
+						email: email,
+						full_name: fullName,
 						phone: phone
 					}),
 					headers: { "Content-type": "application/json" }
@@ -24,8 +22,8 @@ const getState = ({ getStore, setStore, getActions }) => {
 					.catch(err => console.log(err));
 			},
 
-			borrarContacto: id => {
-				fetch("https://assets.breatheco.de/apis/fake/contact/" + id, { method: "DELETE" })
+			borrarContacto: numeroid => {
+				fetch("https://playground.4geeks.com/apis/fake/contact/" + numeroid, { method: "DELETE" })
 					.then(response => response.json())
 					.then(data => {
 						if (data.msg == "ok") {
@@ -36,10 +34,32 @@ const getState = ({ getStore, setStore, getActions }) => {
 			},
 
 			obtenerContactos: () => {
-				fetch("https://assets.breatheco.de/apis/fake/contact/agenda/schiavinaAgenda")
+				fetch("https://playground.4geeks.com/apis/fake/contact/agenda/maxischiavina")
 					.then(response => response.json())
 					.then(data => setStore({ listaContactos: data }))
 					.catch(err => console.log(err));
+			},
+
+			actualizarContacto: (fullName, email, phone, address, numeroid) => {
+				fetch("https://playground.4geeks.com/apis/fake/contact/" + numeroid, {
+					method: "PUT",
+					body: JSON.stringify({
+						"full_name": fullName,
+						"email": email,
+						"agenda_slug": "maxischiavina",
+						"address": address,
+						"phone": phone
+					}),
+					headers: { "Content-type": "application/json" }
+				})
+					.then(response => response.json())
+					.then(json => console.log(json))
+					.catch(err => console.log(err));
+			},
+
+			editarperfil: data => {
+				console.log(data);
+				setStore({ usuario: data });
 			}
 			//(Arrow) Functions that update the Store
 			// Remember to use the scope: scope.state.store & scope.setState()

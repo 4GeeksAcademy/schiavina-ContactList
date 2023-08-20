@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 export const AddContact = () => {
 	const { actions } = useContext(Context);
-	console.log(actions);
 	const [fullName, setFullName] = useState("");
 	const [email, setEmail] = useState("");
 	const [phone, setPhone] = useState("");
