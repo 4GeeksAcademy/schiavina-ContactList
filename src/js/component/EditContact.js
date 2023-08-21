@@ -8,7 +8,7 @@ export const EditContact = () => {
 	const [email, setEmail] = useState(store.usuario.email);
 	const [phone, setPhone] = useState(store.usuario.phone);
 	const [address, setAddress] = useState(store.usuario.address);
-	const [numeroid, setNumeroId] = useState(store.usuario.numeroid)
+	const [numeroid, setNumeroId] = useState(store.usuario.numeroid);
 
 	function handleSubmit(e) {
 		e.preventDefault();

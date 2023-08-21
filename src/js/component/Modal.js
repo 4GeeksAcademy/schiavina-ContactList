@@ -8,9 +8,12 @@ export const Modal = props => {
 		//initialize state here
 	});
 	const { actions } = useContext(Context);
+	console.log(props);
 
-	function borrar(id) {
-		console.log(props);
+	function borrar() {
+		actions.borrarContacto(props.id);
+		props.onClose();
+		actions.obtenerContactos();
 	}
 
 	return (
@@ -62,7 +65,8 @@ Modal.propTypes = {
 	history: PropTypes.object,
 	onClose: PropTypes.func,
 	show: PropTypes.bool,
-	numeroid: PropTypes.number
+	numeroid: PropTypes.number,
+	id: PropTypes.number
 };
 
 /**

@@ -44,11 +44,11 @@ const getState = ({ getStore, setStore, getActions }) => {
 				fetch("https://playground.4geeks.com/apis/fake/contact/" + numeroid, {
 					method: "PUT",
 					body: JSON.stringify({
-						"full_name": fullName,
-						"email": email,
-						"agenda_slug": "maxischiavina",
-						"address": address,
-						"phone": phone
+						full_name: fullName,
+						email: email,
+						agenda_slug: "maxischiavina",
+						address: address,
+						phone: phone
 					}),
 					headers: { "Content-type": "application/json" }
 				})
